@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from ..interfaces.access_point import AccessPointCreate, AccessPointUpdate, AccessPointOut,CreateAPResponse
 from ...Business_Layer.services.access_point_service import AccessPointService
-from ..JWT.jwt_dependency import admin_required
+from ..JWT.jwt_validator.auth.dependencies import get_current_user, admin_required
 from typing import Dict, List
 
 router = APIRouter()

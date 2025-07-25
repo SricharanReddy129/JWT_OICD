@@ -7,7 +7,8 @@ from ..interfaces.permission_management import (
     PermissionGroupUpdate,
     PermissionCreateU
 )
-from ..JWT.jwt_dependency import get_current_user
+
+from ..JWT.jwt_validator.auth.dependencies import get_current_user
 
 router = APIRouter()
 service = PermissionService()

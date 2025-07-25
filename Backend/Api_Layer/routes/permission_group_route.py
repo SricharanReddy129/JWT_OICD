@@ -3,7 +3,7 @@ from typing import List
 from ..interfaces.permissiongroup import GroupBase, GroupOut, PermissionInGroup
 from ...Business_Layer.services.permission_group_service import PermissionGroupService
 from ...Business_Layer.utils.permission_check import permission_required
-from ..JWT.jwt_dependency import get_current_user
+from ..JWT.jwt_validator.auth.dependencies import get_current_user
 
 router = APIRouter()
 

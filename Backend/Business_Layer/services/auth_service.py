@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from ...Api_Layer.interfaces.auth import RegisterUser, LoginUser, ForgotPassword
 from ...Data_Access_Layer.dao.auth_dao import AuthDAO
-from ...Api_Layer.JWT.token_creation import token_create
+from ...Api_Layer.JWT.token_creation.token_create import token_create
 from ..utils.password_utils import hash_password, check_password_or_raise, verify_password
 from ..utils.input_validators import validate_email_format, validate_password_strength
 from ...Data_Access_Layer.utils.dependency import get_db  # only used here
@@ -55,11 +55,12 @@ class AuthService:
         token_data = {
             "sub": str(user.user_id),
             "user_id": user.user_id,
+            "name": user.first_name + " " + user.last_name,
             "email": user.mail,
             "roles": roles,
             "permissions": permissions
         }
-        access_token = token_create(data=token_data)
+        access_token = token_create(token_data)
 
         redirect = "/admin-dashboard" if "Admin" in roles or "Super Admin" in roles else "/home"
 

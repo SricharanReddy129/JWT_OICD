@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, Query
 from ..interfaces.general_user import EditProfile, EditProfileHr
-from ..JWT.jwt_dependency import get_current_user
+from ..JWT.jwt_validator.auth.dependencies import get_current_user
 from ...Business_Layer.services.profile_service import ProfileService
 from ...Business_Layer.utils.permission_check import permission_required
 

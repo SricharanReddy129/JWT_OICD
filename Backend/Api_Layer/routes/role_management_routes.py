@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from ..interfaces.role_mangement import RoleBase, RoleOut, RolePermissionGroupUpdate
-from ..JWT.jwt_dependency import admin_required
+from ..JWT.jwt_validator.auth.dependencies import get_current_user,admin_required
 from ...Business_Layer.services.role_service import role_service_singleton  # singleton used here
 
 router = APIRouter()
